@@ -5,61 +5,52 @@ import java.sql.*;
 public class DbConnection {
 	private static DbConnection dbCon = new DbConnection();
 	Connection con;
-	private DbConnection(){}
-	public static DbConnection getInstance()
-	{
+
+	private DbConnection() {
+	}
+
+	public static DbConnection getInstance() {
 		return dbCon;
 	}
-	public void connect()
-	{
-		try
-		{
+
+	public void connect() {
+		try {
 			Class.forName("com.mysql.jdbc.Driver");
-			con = DriverManager.getConnection("jdbc:mysql://localhost:3306/cas?autoReconnect=true&useSSL=false","root","admin");
-		}
-		catch(Exception ex)
-		{
+			con = DriverManager.getConnection("jdbc:mysql://localhost:3306/cas?autoReconnect=true&useSSL=false", "root",
+					"admin");
+		} catch (Exception ex) {
 			System.out.println(ex.toString());
 		}
 	}
-	public void close()
-	{
-		try
-		{
+
+	public void close() {
+		try {
 			con.close();
-		}
-		catch(Exception ex)
-		{
+		} catch (Exception ex) {
 			System.out.println(ex.toString());
 		}
 	}
-	public void executeQuery(String query)
-	{
+
+	public void executeQuery(String query) {
 		connect();
-		try
-		{
-			Statement stmt=con.createStatement();
+		try {
+			Statement stmt = con.createStatement();
 			stmt.executeUpdate(query);
 			con.close();
-		}
-		catch(Exception ex)
-		{
+		} catch (Exception ex) {
 			System.out.println(ex.toString());
 		}
 	}
-	public ResultSet fetchResult(String query)
-	{
+
+	public ResultSet fetchResult(String query) {
 		connect();
-		try
-		{
-			Statement stmt=con.createStatement();			
+		try {
+			Statement stmt = con.createStatement();
 			ResultSet rs = stmt.executeQuery(query);
-			con.close();
+			// con.close();
 			return rs;
-			
-		}
-		catch(Exception ex)
-		{
+
+		} catch (Exception ex) {
 			System.out.println(ex.toString());
 		}
 		return null;

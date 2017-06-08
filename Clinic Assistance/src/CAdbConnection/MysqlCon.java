@@ -1,23 +1,27 @@
 package CAdbConnection;
+
 import java.sql.*;
 
-class MysqlCon{
-public static void main(String args[]){
-try{
-Class.forName("com.mysql.jdbc.Driver");
+class MysqlCon {
+	public static void main(String args[]) {
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
 
-Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/cas?autoReconnect=true&useSSL=false","root","admin");
+			Connection con = DriverManager
+					.getConnection("jdbc:mysql://localhost:3306/cas?autoReconnect=true&useSSL=false", "root", "admin");
 
-Statement stmt=con.createStatement();
+			Statement stmt = con.createStatement();
 
-ResultSet rs=stmt.executeQuery("select * from person");
+			ResultSet rs = stmt.executeQuery("select * from person");
 
-while(rs.next())
-System.out.println(rs.getInt(1)+"  "+rs.getString(2)+"  "+rs.getString(3));
+			while (rs.next())
+				System.out.println(rs.getInt(1) + "  " + rs.getString(2) + "  " + rs.getString(3));
 
-con.close();
+			con.close();
 
-}catch(Exception e){ System.out.println(e);}
+		} catch (Exception e) {
+			System.out.println(e);
+		}
 
-}
+	}
 }

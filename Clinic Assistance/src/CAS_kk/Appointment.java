@@ -2,8 +2,6 @@ package CAS;
 
 import java.util.*;
 
-import CAdbConnection.DbUpdate;
-
 
 /**
  * 
@@ -24,22 +22,12 @@ public class Appointment {
 
 	public Appointment(Patient patient, Doctor doc, Service serc, Date start,
 			Date end) {
+		super();
 		this.patient = patient;
 		this.doc = doc;
 		this.serc = serc;
 		this.start = start;
 		this.end = end;
-	}
-	public Appointment addAppointment(Patient patient, Doctor doc, Service serc, Date start,
-			Date end) {
-		DbUpdate dbU = new DbUpdate();
-		dbU.addAppointment(patient.get, doctorId, serviceId, clockInId, checkOutId, startTime, endTime);
-		this.patient = patient;
-		this.doc = doc;
-		this.serc = serc;
-		this.start = start;
-		this.end = end;
-		return this;
 	}
 	
 	public Appointment[] getAppointments(Patient p){

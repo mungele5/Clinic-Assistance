@@ -1,6 +1,9 @@
 package CAS;
 
-public class Service {
-	private double cost;
+public abstract class Service {
+	double Cost;
+	int duration;
+
+	public abstract double getCost();
 	
 }

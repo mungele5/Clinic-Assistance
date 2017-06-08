@@ -1,7 +1,11 @@
 package CAS;
 
-public class Consultation {
+public class Consultation extends Service {
 
+	private int duration;
+	private double cost;
+	
+	
 	public int getDuration() {
 		return duration;
 	}
@@ -14,6 +18,4 @@ public class Consultation {
 	public void setCost(double cost) {
 		this.cost = cost;
 	}
-	private int duration;
-	private double cost;
 }
